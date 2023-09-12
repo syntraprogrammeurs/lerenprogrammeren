@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    //meervoudige selectie
+
+    // if(conditie){
+    //
+    // }else if(conditie){
+    //
+    // }else if(conditie){
+    //
+    // }else{
+    //
+    // }
+
+    let naam = prompt("Geef uw naam in:");
+    let beroep = prompt("Geef uw beroep in: (bediende,arbeider,ambtenaar,student");
+
+    if(beroep === 'bediende'){
+        console.log("Het beroep van " + naam + " is " + beroep);
+    }else if(beroep === 'ambtenaar'){
+        document.write("Proficiat u bent ", beroep);
+    }
+    else if(beroep === 'student'){
+        document.write("niet belastingsplichtig ", beroep);
+    }
+    else{
+        document.write("Het beroep van " + naam + " is " + beroep);
+    }
+
+</script>
+</body>
+</html>

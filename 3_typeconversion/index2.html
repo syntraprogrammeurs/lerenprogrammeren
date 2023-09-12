@@ -1,0 +1,42 @@
+<!--<!doctype html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--begin html-->
+<h1>Datatype conversion</h1>
+<h2>number, parseFloat, parseInt</h2>
+<h3>var, let, const</h3>
+
+<p>Uitbreiding: vraag nu ook het aantal bij te tellen geboortejaren op.</p>
+<p>Hoeveel jaren wens je erbij te tellen?</p>
+
+<p id="myResult"></p>
+
+
+
+<!--end html-->
+
+<!--begin javascript-->
+<script>
+    let yearOfBirth = window.prompt("What is your birth year?");
+    let aantalJaren = window.prompt("Hoeveel jaren wens je erbij te tellen?");
+
+    // yearOfBirth = YeartOfBirth + 1;
+    yearOfBirth = Number(yearOfBirth)+Number(aantalJaren);
+    document.getElementById("myResult").innerHTML = yearOfBirth;
+
+    // console.log(yearOfBirth);
+
+
+
+
+</script>
+<!--end javascript-->
+</body>
+</html>

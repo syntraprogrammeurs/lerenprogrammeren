@@ -1,0 +1,56 @@
+<!--<!doctype html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--begin html-->
+<!--oefening:-->
+<!--maak een kleine rekenmachine-->
+<input type="text" id="getal1" />
+<input type="text" id="getal2" />
+<button type="button" id="plus">+</button>
+<button type="button" id="min">-</button>
+<button type="button" id="maal">*</button>
+<button type="button" id="gedeeld">/</button>
+<p id="resultaat"></p>
+
+<!--end html-->
+
+<!--begin javascript-->
+<script>
+
+
+document.getElementById("plus").onclick = function(){
+    let getal1 = Number(document.getElementById("getal1").value);
+    let getal2 = Number(document.getElementById("getal2").value);
+    document.getElementById("resultaat").innerHTML = getal1 + getal2;
+}
+document.getElementById("min").onclick = function(){
+    let getal1 = Number(document.getElementById("getal1").value);
+    let getal2 = Number(document.getElementById("getal2").value);
+    document.getElementById("resultaat").innerHTML = getal1 - getal2;
+
+}
+document.getElementById("gedeeld").onclick = function(){
+    let getal1 = Number(document.getElementById("getal1").value);
+    let getal2 = Number(document.getElementById("getal2").value);
+    document.getElementById("resultaat").innerHTML = getal1 / getal2;
+
+}
+document.getElementById("maal").onclick = function(){
+    let getal1 = Number(document.getElementById("getal1").value);
+    let getal2 = Number(document.getElementById("getal2").value);
+    document.getElementById("resultaat").innerHTML = getal1 * getal2;
+
+}
+
+
+</script>
+<!--end javascript-->
+</body>
+</html>
