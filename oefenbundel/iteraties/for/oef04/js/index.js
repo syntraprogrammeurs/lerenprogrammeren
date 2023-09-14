@@ -8,9 +8,10 @@ for (let i = ingevoerdGetal; i >= 1; i--) {
         faculteitString += "x"+i;
     }
 }
-document.write(faculteitString+ "=" + faculteit);
-
-//document.write(`${ingevoerdGetal}! = ${faculteit}`);
+//es5
+//document.write(faculteitString+ "=" + faculteit);
+//es6
+document.write(`${ingevoerdGetal}! = ${faculteit}`);
 
 // 5-> 1
 
