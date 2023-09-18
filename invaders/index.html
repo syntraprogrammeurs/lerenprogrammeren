@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Invaders</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        canvas { border: 1px solid black; }
+    </style>
+</head>
+<body>
+<canvas id="gameCanvas" width="800" height="600"></canvas>
+<script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let player = { x: 380, y: 550, width: 40, height: 20 };
+    let enemies = [];
+    let projectiles = [];
+    let score = 0;
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keyup", handleKeyUp);
+
+    function handleKeyDown(e) {
+        switch (e.key) {
+            case "ArrowLeft":
+                player.left = true;
+                break;
+            case "ArrowRight":
+                player.right = true;
+                break;
+            case " ":
+                shoot();
+                break;
+        }
+    }
+
+    function handleKeyUp(e) {
+        switch (e.key) {
+            case "ArrowLeft":
+                player.left = false;
+                break;
+            case "ArrowRight":
+                player.right = false;
+                break;
+        }
+    }
+
+    function createEnemies() {
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 3; j++) {
+                enemies.push({ x: 50 + i * 150, y: 50 + j * 50, width: 40, height: 20 });
+            }
+        }
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw player
+        ctx.fillStyle = "#00F";
+        ctx.fillRect(player.x, player.y, player.width, player.height);
+
+        // Draw enemies
+        ctx.fillStyle = "#F00";
+        enemies.forEach(enemy => {
+            ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+        });
+
+        // Draw projectiles
+        ctx.fillStyle = "#0F0";
+        projectiles.forEach(projectile => {
+            ctx.fillRect(projectile.x, projectile.y, projectile.width, projectile.height);
+        });
+
+        // Draw score
+        ctx.fillStyle = "#000";
+        ctx.font = "20px Arial";
+        ctx.fillText("Score: " + score, 10, 30);
+    }
+
+    function movePlayer() {
+        if (player.left && player.x > 0) {
+            player.x -= 5;
+        }
+        if (player.right && player.x < canvas.width - player.width) {
+            player.x += 5;
+        }
+    }
+
+    function moveProjectiles() {
+        projectiles.forEach(projectile => {
+            projectile.y -= 5;
+        });
+
+        // Remove projectiles that are out of the canvas
+        projectiles = projectiles.filter(projectile => projectile.y > 0);
+    }
+
+    function moveEnemies() {
+        enemies.forEach(enemy => {
+            enemy.x += Math.random() * 4 - 2; // Random horizontal movement
+            enemy.y += 1; // Vertical movement
+        });
+    }
+
+    function checkCollisions() {
+        projectiles.forEach((projectile, pIndex) => {
+            enemies.forEach((enemy, eIndex) => {
+                if (
+                    projectile.x < enemy.x + enemy.width &&
+                    projectile.x + projectile.width > enemy.x &&
+                    projectile.y < enemy.y + enemy.height &&
+                    projectile.y + projectile.height > enemy.y
+                ) {
+                    score++;
+                    projectiles.splice(pIndex, 1);
+                    enemies.splice(eIndex, 1);
+                }
+            });
+        });
+    }
+
+    function shoot() {
+        projectiles.push({ x: player.x + player.width / 2 - 2, y: player.y, width: 4, height: 10 });
+    }
+
+    function gameLoop() {
+        movePlayer();
+        moveProjectiles();
+        moveEnemies();
+        checkCollisions();
+        draw();
+
+        requestAnimationFrame(gameLoop);
+    }
+
+    createEnemies();
+    gameLoop();
+</script>
+</body>
+</html>
