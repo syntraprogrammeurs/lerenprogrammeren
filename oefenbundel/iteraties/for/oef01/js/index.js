@@ -6,3 +6,6 @@ for(let i=1;i<=hoeveelGetallen;i++){
     som+= getal;
 }
 document.write("De totale som van " + hoeveelGetallen + " getallen is " + som);
+
+
+
