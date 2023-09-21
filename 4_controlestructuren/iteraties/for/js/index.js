@@ -1,6 +1,6 @@
-//for loop
+//forandwhile loop
 
-// for(teller;conditie;manipulatie van de teller){
+// forandwhile(teller;conditie;manipulatie van de teller){
 //     uitvoering code
 // }
 //3de parameter
